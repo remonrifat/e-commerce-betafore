@@ -38,14 +38,14 @@ export default function ProductCard({ product }: ProductCardProps) {
 
       {/* Price */}
       <div className="px-4 mt-4">
-        {product.originalPrice && (
+        {typeof product.originalPrice === 'number' && (
           <p className="text-sm text-gray-400 line-through">
             RS {product.originalPrice.toLocaleString()}
           </p>
         )}
 
         <p className="text-lg font-semibold text-teal-600">
-          RS {product.price.toLocaleString()}
+          RS {typeof product.price === 'number' ? product.price.toLocaleString() : 'N/A'}
         </p>
       </div>
 

@@ -81,15 +81,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <div className="mb-6">
             <div className="flex items-center gap-3 mb-2">
               <span className="text-4xl font-bold text-teal-600">
-                Rs {product.price.toLocaleString()}
+                Rs {typeof product.price === 'number' ? product.price.toLocaleString() : 'N/A'}
               </span>
-              {product.originalPrice && (
+              {typeof product.originalPrice === 'number' && (
                 <span className="text-xl text-gray-400 line-through">
                   Rs {product.originalPrice.toLocaleString()}
                 </span>
               )}
             </div>
-            {product.originalPrice && (
+            {typeof product.originalPrice === 'number' && typeof product.price === 'number' && product.originalPrice > product.price && (
               <p className="text-green-600 font-medium">
                 Save Rs{" "}
                 {(product.originalPrice - product.price).toLocaleString()} (
